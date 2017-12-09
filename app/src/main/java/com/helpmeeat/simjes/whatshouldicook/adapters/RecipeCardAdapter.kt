@@ -37,14 +37,8 @@ class RecipeCardAdapter(context: Context): ArrayAdapter<Recipe>(context, 0) {
     }
 
     private class ViewHolder(view: View) {
-        var name: TextView
-        var description: TextView
-        var image: ImageView
-
-        init {
-            this.name = view.recipe_card_name
-            this.description = view.recipe_card_description
-            this.image = view.recipe_card_image
-        }
+        var name: TextView = view.recipe_card_name
+        var description: TextView = view.recipe_card_description
+        var image: ImageView = view.recipe_card_image
     }
 }

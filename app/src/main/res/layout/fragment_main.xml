@@ -9,31 +9,67 @@ android:layout_height="match_parent"
 tools:context="com.helpmeeat.simjes.whatshouldicook.fragments.SwipeCardFragment"
 tools:showIn="@layout/activity_main">
 
-<com.yuyakaido.android.cardstackview.CardStackView
-    android:id="@+id/fragment_card_stack_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="32dp"
-    android:paddingBottom="32dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:clipToPadding="false"
-    app:visibleCount="3"
-    app:swipeThreshold="0.75"
-    app:translationDiff="12"
-    app:scaleDiff="0.02"
-    app:stackFrom="top"
-    app:elevationEnabled="true"
-    app:swipeEnabled="true"
-    app:swipeDirection="freedom_no_bottom"
-    app:leftOverlay="@layout/overlay_left"
-    app:rightOverlay="@layout/overlay_right"
-    app:topOverlay="@layout/overlay_top" />
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/fragment_card_stack_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonPanel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="32dp"
+        app:elevationEnabled="true"
+        app:leftOverlay="@layout/overlay_left"
+        app:rightOverlay="@layout/overlay_right"
+        app:scaleDiff="0.02"
+        app:stackFrom="top"
+        app:swipeDirection="freedom_no_bottom"
+        app:swipeEnabled="true"
+        app:swipeThreshold="0.75"
+        app:topOverlay="@layout/overlay_top"
+        app:translationDiff="12"
+        app:visibleCount="3" />
 
-<ProgressBar
-    android:id="@+id/fragment_progress_bar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"/>
+    <ProgressBar
+        android:id="@+id/fragment_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/undofab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/likefab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/nofab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/yesfab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </LinearLayout>
 
 </RelativeLayout>
