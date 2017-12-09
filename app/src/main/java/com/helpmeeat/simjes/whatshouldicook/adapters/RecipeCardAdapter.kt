@@ -15,7 +15,7 @@ import com.helpmeeat.simjes.whatshouldicook.R.layout.recipe_card
 
 class RecipeCardAdapter(context: Context): ArrayAdapter<Recipe>(context, 0) {
 
-    override fun getView(position: Int, contentView: View, parent: ViewGroup): View {
+    override fun getView(position: Int, contentView: View?, parent: ViewGroup): View {
         var contentView = contentView
         val holder: ViewHolder
 
@@ -23,17 +23,17 @@ class RecipeCardAdapter(context: Context): ArrayAdapter<Recipe>(context, 0) {
             val inflater = LayoutInflater.from(context)
             contentView = inflater.inflate(recipe_card, parent, false)
             holder = ViewHolder(contentView)
-            contentView.setTag(holder)
+            contentView.tag = holder
         } else {
-            holder = contentView.getTag() as ViewHolder
+            holder = contentView.tag as ViewHolder
         }
 
         val recipe = getItem(position)
 
-        holder.name.setText(recipe.name)
-        holder.description.setText(recipe.description)
+        holder.name.text = recipe.name
+        holder.description.text = recipe.description
         Glide.with(context).load(recipe.url).into(holder.image)
-        return contentView
+        return contentView!!
     }
 
     private class ViewHolder(view: View) {
