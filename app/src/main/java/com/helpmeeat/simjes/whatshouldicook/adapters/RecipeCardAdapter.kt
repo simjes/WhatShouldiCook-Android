@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import com.helpmeeat.simjes.whatshouldicook.models.Recipe
+import com.helpmeeat.simjes.whatshouldicook.viewmodels.RecipeViewModel
 import android.widget.TextView
 import kotlinx.android.synthetic.main.recipe_card.view.*
 import com.bumptech.glide.Glide
 import com.helpmeeat.simjes.whatshouldicook.R.layout.recipe_card
 
 
-class RecipeCardAdapter(context: Context): ArrayAdapter<Recipe>(context, 0) {
+class RecipeCardAdapter(context: Context): ArrayAdapter<RecipeViewModel>(context, 0) {
 
     override fun getView(position: Int, contentView: View?, parent: ViewGroup): View {
         var contentView = contentView
