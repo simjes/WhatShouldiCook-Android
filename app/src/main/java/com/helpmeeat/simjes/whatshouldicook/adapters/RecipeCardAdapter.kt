@@ -15,6 +15,8 @@ import com.helpmeeat.simjes.whatshouldicook.R.layout.recipe_card
 
 class RecipeCardAdapter(context: Context): ArrayAdapter<RecipeViewModel>(context, 0) {
 
+    val recipes = ArrayList<RecipeViewModel>()
+
     override fun getView(position: Int, contentView: View?, parent: ViewGroup): View {
         var contentView = contentView
         val holder: ViewHolder
