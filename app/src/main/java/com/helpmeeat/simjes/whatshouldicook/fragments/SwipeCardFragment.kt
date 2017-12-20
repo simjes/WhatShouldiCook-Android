@@ -28,12 +28,12 @@ class SwipeCardFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         recipeListViewModel = ViewModelProviders.of(this).get(RecipeListViewModel::class.java!!)
-        adapter = RecipeCardAdapter(this.context!!)
+        adapter = RecipeCardAdapter(this.context!!, recipeListViewModel!!.recipes)
 
-        val tempAdapter = RecipeCardAdapter(this.context!!)
-        tempAdapter.addAll(recipeListViewModel!!.recipes)
-
-        adapter = tempAdapter
+//        val tempAdapter = RecipeCardAdapter(this.context!!,)
+//        tempAdapter.addAll(recipeListViewModel!!.recipes)
+//
+//        adapter = tempAdapter
         fragment_card_stack_view.setAdapter(adapter)
         fragment_card_stack_view.visibility = View.VISIBLE
         fragment_progress_bar.visibility = View.GONE

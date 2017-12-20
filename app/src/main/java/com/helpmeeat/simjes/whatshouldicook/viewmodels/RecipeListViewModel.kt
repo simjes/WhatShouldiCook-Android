@@ -1,10 +1,11 @@
 package com.helpmeeat.simjes.whatshouldicook.viewmodels
 
 import android.arch.lifecycle.ViewModel
+import com.helpmeeat.simjes.whatshouldicook.repositories.RecipeRepository
 
 
-class RecipeListViewModel: ViewModel() {
-    val recipes = ArrayList<RecipeViewModel>(listOf(
+class RecipeListViewModel() : ViewModel() {
+    var recipes = ArrayList<RecipeViewModel>(listOf(
         RecipeViewModel(0, "Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800"),
         RecipeViewModel(1, "Fushimi Inari Shrine", "Kyoto", "https://source.unsplash.com/NYyCqdBOKwc/600x800"),
         RecipeViewModel(2, "Bamboo Forest", "Kyoto", "https://source.unsplash.com/buF62ewDLcQ/600x800"),
@@ -15,6 +16,12 @@ class RecipeListViewModel: ViewModel() {
         RecipeViewModel(7, "Eiffel Tower", "Paris", "https://source.unsplash.com/HN-5Z6AmxrM/600x800"),
         RecipeViewModel(8, "Big Ben", "London", "https://source.unsplash.com/CdVAUADdqEc/600x800"),
         RecipeViewModel(9, "Great Wall of China", "China", "https://source.unsplash.com/AWh9C-QjhE4/600x800")
-            )
+        )
     )
+
+    init {
+//        val repo = RecipeRepository()
+//        recipes = repo.GetNextRecipes()
+    }
+
 }
