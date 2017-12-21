@@ -11,24 +11,15 @@ import com.helpmeeat.simjes.whatshouldicook.R
 import com.helpmeeat.simjes.whatshouldicook.databinding.RecipeCardBinding
 
 
-class RecipeCardAdapter(context: Context, private var recipes: ArrayList<RecipeViewModel>): ArrayAdapter<RecipeViewModel>(context, 0) {
 
+class RecipeCardAdapter(context: Context): ArrayAdapter<RecipeViewModel>(context, 0) {
     override fun getView(position: Int, contentView: View?, parent: ViewGroup): View {
-        val recipeHolder: RecipeViewHolder
-        if (contentView == null) {
-            val recipeCardBinding: RecipeCardBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.recipe_card, parent, false)
-            recipeHolder = RecipeViewHolder(recipeCardBinding)
-            recipeHolder.view.tag = recipeHolder
-        } else {
-            recipeHolder = contentView.tag as RecipeViewHolder
-        }
-        recipeHolder.recipeCardBinding.recipe = recipes.get(position)
+        val binding = contentView?.tag as? RecipeCardBinding ?:  DataBindingUtil.inflate(
+                LayoutInflater.from(context),
+                R.layout.recipe_card, parent, false)
+        binding.recipe = this.getItem(position)
+        binding.root.tag = binding
 
-        return recipeHolder.view
-    }
-
-    private class RecipeViewHolder(var recipeCardBinding: RecipeCardBinding) {
-        var view: View = recipeCardBinding.root
-
+        return binding.root
     }
 }
