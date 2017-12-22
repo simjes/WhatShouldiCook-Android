@@ -14,7 +14,14 @@ class RecipeListViewModel : ViewModel() {
 
     init {
         DaggerAppComponent.builder().build().inject(this)
+        loadMoreRecipes()
+    }
+
+    fun loadMoreRecipes() {
         recipes.addAll(recipeRepository.GetNextRecipes())
     }
 
+    fun removeCard() {
+        recipes.removeAt(0)
+    }
 }

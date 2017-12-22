@@ -43,6 +43,15 @@ class SwipeCardFragment : Fragment() {
             }
 
             override fun onCardSwiped(direction: SwipeDirection) {
+                recipeListViewModel.removeCard()
+                val shouldLoadMore = recipeListViewModel.recipes.size <= 3
+                if (shouldLoadMore) {
+                    recipeListViewModel.loadMoreRecipes()
+                    adapter.clear()
+                    adapter.addAll(recipeListViewModel.recipes)
+                    adapter.notifyDataSetChanged()
+                }
+
                 Log.d("CardStackView", "onCardSwiped: " + direction.toString())
                 Log.d("CardStackView", "topIndex: " + fragment_card_stack_view.getTopIndex())
                /* if (fragment_card_stack_view.getTopIndex() === adapter.getCount() - 5) {
