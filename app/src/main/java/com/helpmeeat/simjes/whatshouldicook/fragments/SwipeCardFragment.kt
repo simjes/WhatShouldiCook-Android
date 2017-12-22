@@ -15,8 +15,8 @@ import com.yuyakaido.android.cardstackview.SwipeDirection
 import com.yuyakaido.android.cardstackview.CardStackView
 
 class SwipeCardFragment : Fragment() {
-    var recipeListViewModel: RecipeListViewModel? = null
-    var adapter: RecipeCardAdapter? = null
+    lateinit var recipeListViewModel: RecipeListViewModel
+    lateinit var adapter: RecipeCardAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,14 +27,13 @@ class SwipeCardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         recipeListViewModel = ViewModelProviders.of(this).get(RecipeListViewModel::class.java)
         adapter = RecipeCardAdapter(this.context!!)
-        adapter!!.addAll(recipeListViewModel!!.recipes)
+        adapter.addAll(recipeListViewModel.recipes)
 
         fragment_card_stack_view.setAdapter(adapter)
         fragment_card_stack_view.visibility = View.VISIBLE
         fragment_progress_bar.visibility = View.GONE
 
         setup()
-        //reload()
     }
 
     private fun setup() {
