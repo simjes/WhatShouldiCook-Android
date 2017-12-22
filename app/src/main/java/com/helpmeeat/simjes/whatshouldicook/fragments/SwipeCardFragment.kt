@@ -14,8 +14,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import com.yuyakaido.android.cardstackview.SwipeDirection
 import com.yuyakaido.android.cardstackview.CardStackView
 
-
-
 class SwipeCardFragment : Fragment() {
     var recipeListViewModel: RecipeListViewModel? = null
     var adapter: RecipeCardAdapter? = null

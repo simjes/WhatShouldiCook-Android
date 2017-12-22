@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.helpmeeat.simjes.whatshouldicook.R
+import com.helpmeeat.simjes.whatshouldicook.dagger.AppComponent
+import com.helpmeeat.simjes.whatshouldicook.dagger.AppModule
+import com.helpmeeat.simjes.whatshouldicook.dagger.DaggerAppComponent
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,4 +31,8 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+
+
 }

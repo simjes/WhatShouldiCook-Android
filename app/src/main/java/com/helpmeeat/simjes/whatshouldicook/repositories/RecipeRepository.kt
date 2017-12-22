@@ -3,7 +3,6 @@ package com.helpmeeat.simjes.whatshouldicook.repositories
 import com.helpmeeat.simjes.whatshouldicook.viewmodels.RecipeViewModel
 
 class RecipeRepository {
-
     fun GetNextRecipes(): ArrayList<RecipeViewModel> {
         val recipes = ArrayList<RecipeViewModel>(listOf(
                 RecipeViewModel(0, "Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800"),
