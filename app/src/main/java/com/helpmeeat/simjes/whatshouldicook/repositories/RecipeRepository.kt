@@ -1,9 +1,49 @@
 package com.helpmeeat.simjes.whatshouldicook.repositories
 
+import co.metalab.asyncawait.async
+import com.helpmeeat.simjes.whatshouldicook.dagger.DaggerAppComponent
+import com.helpmeeat.simjes.whatshouldicook.models.Recipe
+import com.helpmeeat.simjes.whatshouldicook.models.RecipeResponse
+import com.helpmeeat.simjes.whatshouldicook.services.RecipeApi
 import com.helpmeeat.simjes.whatshouldicook.viewmodels.RecipeViewModel
+import ru.gildor.coroutines.retrofit.Result
+import ru.gildor.coroutines.retrofit.awaitResponse
+import ru.gildor.coroutines.retrofit.awaitResult
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RecipeRepository {
+    @Inject lateinit var recipeApi: RecipeApi
+
+    init {
+       DaggerAppComponent.builder().build().injectRecipeService(this)
+    }
+
     fun GetNextRecipes(): ArrayList<RecipeViewModel> {
+
+        async {
+            val result = await {
+                val response = recipeApi.getRandomRecipes().execute()
+                if (response.isSuccessful) {
+                    val recipes = response.body()
+
+
+                }
+                //Long running code
+            }
+            // Use result
+        }
+
+//        return when (result) {
+//            is Result.Ok -> return result.value.recipes
+//            is Result.Error -> throw Throwable("HTTP error: ${result.response.message()}")
+//            is Result.Exception -> throw result.exception
+//            else -> {
+//                throw Throwable("Something went wrong, please try again later.")
+//            }
+//        }
+
         val recipes = ArrayList<RecipeViewModel>(listOf(
                 RecipeViewModel(0, "Yasaka Shrine", "Kyoto", "https://source.unsplash.com/Xq1ntWruZQI/600x800"),
                 RecipeViewModel(1, "Fushimi Inari Shrine", "Kyoto", "https://source.unsplash.com/NYyCqdBOKwc/600x800"),
@@ -19,4 +59,17 @@ class RecipeRepository {
         )
         return recipes
     }
+
+//    private fun process(response: RecipeResponse): RecipeResponse {
+//        val dataResponse = response.data
+//        val news = dataResponse.children.map {
+//            val item = it.data
+//            RedditNewsItem(item.author, item.title, item.num_comments,
+//                    item.created, item.thumbnail, item.url)
+//        }
+//        return RedditNews(
+//                dataResponse.after.orEmpty(),
+//                dataResponse.before.orEmpty(),
+//                news)
+//    }
 }

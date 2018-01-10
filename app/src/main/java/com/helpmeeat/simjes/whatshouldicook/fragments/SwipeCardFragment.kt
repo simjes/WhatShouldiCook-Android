@@ -36,6 +36,7 @@ class SwipeCardFragment : Fragment() {
         setup()
     }
 
+    //TODO: bind to events?
     private fun setup() {
         fragment_card_stack_view.setCardEventListener(object: CardStackView.CardEventListener {
             override fun onCardDragging(percentX: Float, percentY: Float) {
@@ -53,11 +54,7 @@ class SwipeCardFragment : Fragment() {
                 }
 
                 Log.d("CardStackView", "onCardSwiped: " + direction.toString())
-                Log.d("CardStackView", "topIndex: " + fragment_card_stack_view.getTopIndex())
-               /* if (fragment_card_stack_view.getTopIndex() === adapter.getCount() - 5) {
-                    Log.d("CardStackView", "Paginate: " + fragment_card_stack_view.getTopIndex())
-                    paginate()
-                }*/
+                Log.d("CardStackView", "topIndex: " + fragment_card_stack_view.topIndex)
             }
 
             override fun onCardReversed() {
@@ -73,10 +70,4 @@ class SwipeCardFragment : Fragment() {
             }
         })
     }
-
-    /*private fun paginate() {
-        fragment_card_stack_view.setPaginationReserved()
-        adapter!!.addAll(createRecipeCardAdapter())
-        adapter.notifyDataSetChanged()
-    }*/
 }
