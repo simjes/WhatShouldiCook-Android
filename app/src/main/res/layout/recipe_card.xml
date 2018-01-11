@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="recipe" type="com.helpmeeat.simjes.whatshouldicook.viewmodels.RecipeViewModel"/>
+        <variable name="recipe" type="com.helpmeeat.simjes.whatshouldicook.models.Recipe"/>
     </data>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{recipe.url}"/>
+                app:imageUrl="@{recipe.image}"/>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -37,7 +37,7 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="26sp"
-                    android:text="@{recipe.name}"/>
+                    android:text="@{recipe.title}"/>
 
                 <TextView
                     android:id="@+id/recipe_card_description"
@@ -46,7 +46,7 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"
-                    android:text="@{recipe.description}"/>
+                    android:text="@{recipe.sourceName}"/>
             </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
