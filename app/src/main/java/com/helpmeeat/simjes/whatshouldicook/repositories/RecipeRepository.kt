@@ -1,12 +1,9 @@
 package com.helpmeeat.simjes.whatshouldicook.repositories
 
-import co.metalab.asyncawait.async
 import com.helpmeeat.simjes.whatshouldicook.dagger.DaggerAppComponent
 import com.helpmeeat.simjes.whatshouldicook.models.Recipe
 import com.helpmeeat.simjes.whatshouldicook.services.RecipeApi
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.runBlocking
+import ru.gildor.coroutines.retrofit.awaitResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,14 +14,8 @@ class RecipeRepository {
     init {
        DaggerAppComponent.builder().build().injectRecipeService(this)
     }
-
-    fun GetNextRecipes(): List<Recipe> {
-        val recipes = runBlocking {
-            async(CommonPool) {
-                val response = recipeApi.getRandomRecipes().execute()
-                return@async response.body()
-            }.await()
-        }
-        return recipes!!
+    suspend fun GetNextRecipes(): MutableList<Recipe>? {
+        val recipes = recipeApi.getRandomRecipes().awaitResponse()
+        return recipes.body()
     }
 }

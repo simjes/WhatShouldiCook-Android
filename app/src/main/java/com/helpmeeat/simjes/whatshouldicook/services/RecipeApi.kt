@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface RecipeApi {
     @GET("/randomRecipes")
-    fun getRandomRecipes(): Call<List<Recipe>>
+    fun getRandomRecipes(): Call<MutableList<Recipe>>
 }

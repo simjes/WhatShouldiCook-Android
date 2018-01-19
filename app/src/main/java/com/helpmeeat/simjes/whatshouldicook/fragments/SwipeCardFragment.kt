@@ -1,5 +1,6 @@
 package com.helpmeeat.simjes.whatshouldicook.fragments
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import android.os.Bundle
@@ -17,6 +18,7 @@ import com.yuyakaido.android.cardstackview.CardStackView
 class SwipeCardFragment : Fragment() {
     lateinit var recipeListViewModel: RecipeListViewModel
     lateinit var adapter: RecipeCardAdapter
+    var counter = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -27,8 +29,11 @@ class SwipeCardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         recipeListViewModel = ViewModelProviders.of(this).get(RecipeListViewModel::class.java)
         adapter = RecipeCardAdapter(this.context!!)
-        adapter.addAll(recipeListViewModel.recipes)
 
+        recipeListViewModel.recipes.observe(this, Observer { recipeList ->
+            adapter.addAll(recipeList)
+            adapter.notifyDataSetChanged()
+        })
         fragment_card_stack_view.setAdapter(adapter)
         fragment_card_stack_view.visibility = View.VISIBLE
         fragment_progress_bar.visibility = View.GONE
@@ -36,7 +41,6 @@ class SwipeCardFragment : Fragment() {
         setup()
     }
 
-    //TODO: bind to events?
     private fun setup() {
         fragment_card_stack_view.setCardEventListener(object: CardStackView.CardEventListener {
             override fun onCardDragging(percentX: Float, percentY: Float) {
@@ -44,14 +48,22 @@ class SwipeCardFragment : Fragment() {
             }
 
             override fun onCardSwiped(direction: SwipeDirection) {
-                recipeListViewModel.removeCard()
-                val shouldLoadMore = recipeListViewModel.recipes.size <= 3
-                if (shouldLoadMore) {
-                    recipeListViewModel.loadMoreRecipes()
-                    adapter.clear()
-                    adapter.addAll(recipeListViewModel.recipes)
-                    adapter.notifyDataSetChanged()
+                recipeListViewModel.removeRecipe()
+
+                counter++
+                if(counter % 3 == 0) {
+//                    adapter.clear()
+//                    fragment_card_stack_view.getChildAt(0)
+//                    recipeListViewModel.loadMoreRecipes()
                 }
+//                recipeListViewModel.removeRecipe()
+//                val shouldLoadMore = recipeListViewModel.recipes.value!!.size <= 3
+//                if (shouldLoadMore) {
+//                    recipeListViewModel.loadMoreRecipes()
+//                    adapter.clear()
+//                    adapter.addAll(recipeListViewModel.recipes.value)
+//                    adapter.notifyDataSetChanged()
+//                }
 
                 Log.d("CardStackView", "onCardSwiped: " + direction.toString())
                 Log.d("CardStackView", "topIndex: " + fragment_card_stack_view.topIndex)
