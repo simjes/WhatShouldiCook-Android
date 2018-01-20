@@ -6,7 +6,6 @@ import com.helpmeeat.simjes.whatshouldicook.dagger.DaggerAppComponent
 import com.helpmeeat.simjes.whatshouldicook.models.Recipe
 import com.helpmeeat.simjes.whatshouldicook.repositories.RecipeRepository
 import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -29,9 +28,7 @@ class RecipeListViewModel : ViewModel() {
             if (allRecipes != null) {
                 allRecipes += newRecipe
             }
-            launch (UI) {
-                recipes.value = allRecipes
-            }
+            recipes.postValue(allRecipes)
         }
     }
 
@@ -40,9 +37,7 @@ class RecipeListViewModel : ViewModel() {
             val allRecipes = recipes.value
             if (allRecipes != null) {
                 allRecipes.removeAt(0)
-                launch (UI) {
-                    recipes.value = allRecipes
-                }
+                recipes.postValue(allRecipes)
             }
         }
     }

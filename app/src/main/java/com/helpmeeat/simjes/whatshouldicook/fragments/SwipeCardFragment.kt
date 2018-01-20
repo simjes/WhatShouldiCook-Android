@@ -31,6 +31,7 @@ class SwipeCardFragment : Fragment() {
         adapter = RecipeCardAdapter(this.context!!)
 
         recipeListViewModel.recipes.observe(this, Observer { recipeList ->
+            adapter.clear()
             adapter.addAll(recipeList)
             adapter.notifyDataSetChanged()
         })
@@ -51,19 +52,9 @@ class SwipeCardFragment : Fragment() {
                 recipeListViewModel.removeRecipe()
 
                 counter++
-                if(counter % 3 == 0) {
-//                    adapter.clear()
-//                    fragment_card_stack_view.getChildAt(0)
-//                    recipeListViewModel.loadMoreRecipes()
+                if(counter % 4 == 0) {
+                    recipeListViewModel.loadMoreRecipes()
                 }
-//                recipeListViewModel.removeRecipe()
-//                val shouldLoadMore = recipeListViewModel.recipes.value!!.size <= 3
-//                if (shouldLoadMore) {
-//                    recipeListViewModel.loadMoreRecipes()
-//                    adapter.clear()
-//                    adapter.addAll(recipeListViewModel.recipes.value)
-//                    adapter.notifyDataSetChanged()
-//                }
 
                 Log.d("CardStackView", "onCardSwiped: " + direction.toString())
                 Log.d("CardStackView", "topIndex: " + fragment_card_stack_view.topIndex)
