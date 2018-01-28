@@ -23,37 +23,25 @@ tools:showIn="@layout/activity_main">
         android:layout_centerInParent="true"
         android:visibility="visible"/>
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/buttonPanel"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:gravity="center">-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/undofab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
-            <!--app:srcCompat="@android:drawable/ic_menu_revert" />-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/likefab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
-            <!--app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/nofab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
-            <!--app:srcCompat="@android:drawable/ic_dialog_alert" />-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/yesfab"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
-            <!--app:srcCompat="@android:drawable/ic_input_add" />-->
-    <!--</LinearLayout>-->
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/nofab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_alert" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/yesfab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </LinearLayout>
 
 </RelativeLayout>
